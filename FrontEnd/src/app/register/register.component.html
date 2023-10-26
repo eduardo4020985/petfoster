@@ -1,0 +1,107 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="username">Nome da ONG</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+        />
+        <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+          Insira o nome da ONG!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">Cidade</label>
+        <input
+          type="text"
+          class="form-control"
+          name="city"
+          [(ngModel)]="form.city"
+          required
+          #city="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && city.errors }"
+        />
+        <div *ngIf="city.errors && f.submitted" class="invalid-feedback">
+          Insira a cidade!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="state">Estado</label>
+        <input
+          type="text"
+          class="form-control"
+          name="state"
+          [(ngModel)]="form.state"
+          required
+          #state="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && state.errors }"
+        />
+        <div *ngIf="state.errors && f.submitted" class="invalid-feedback">
+          Insira o estado!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input
+          type="text"
+          class="form-control"
+          name="website"
+          [(ngModel)]="form.website"
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+        />
+        <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
+          Insira um email válido!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+        />
+        <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+          <div *ngIf="password.errors['required']">Senha é obrigatória</div>
+          <div *ngIf="password.errors['minlength']">
+            Senha deve ter pelo menos 6 caracteres
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Registrar</button>
+      </div>
+      <div class="form-group">
+        <div *ngIf="f.submitted && isRegisterFailed" class="alert alert-danger" role="alert">
+          Erro: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

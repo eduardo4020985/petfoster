@@ -1,0 +1,15 @@
+<div class="row p-3">
+  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let animal of animals">
+    <div class="card mb-4 shadow" style="background-color: #f8f9fa;">
+      <img [src]="animal.photoUrl" class="card-img-top" alt="Foto do animal" />
+      <div class="card-body" style="background-color: #bad1f5">
+        <h5 class="card-title" style="color: #007bff;">{{ animal.name }}</h5>
+        <p class="card-text"><strong>Idade:</strong> {{ animal.age }} anos</p>
+        <p class="card-text"><strong>Descrição:</strong> {{ animal.description }}</p>
+        <p class="card-text">
+          <strong>Adotado:</strong> {{ animal.isAdopted ? 'Sim' : 'Não' }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

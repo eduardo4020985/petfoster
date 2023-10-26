@@ -1,0 +1,60 @@
+<header id="app" class="nav-main navbar-expand-lg">
+  <div class="container-fluid container">
+    <nav class="navbar navbar-expand-lg navbar-light" *ngIf="isLoggedIn">
+      <a href="#" class="navbar-brand">PetFoster</a>
+
+      <button class="navbar-toggler custom-toggler" type="button" (click)="toggleMenuDiv()" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto" routerLinkActive="active">
+          <li class="nav-item">
+            <a href="/ong" class="nav-link" (click)="hideMenu()" routerLink="ong">Animais</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a  class="nav-link">{{ username }}</a>
+          </li>
+          <li class="nav-item" (click)="hideMenu(); logout()">
+            <a href="/logout" class="nav-link" routerLink="login">Sair</a>
+          </li>
+        </ul>
+      </div>
+      
+    </nav>
+    <div [class.collapse]="!isMenuVisible" [ngClass]="{'show': isMenuVisible}">
+      <nav id="navbar-mobile">
+        <ul class="navbar-nav mr-auto" routerLinkActive="active">
+          <li class="nav-item">
+            <div class="user-container ">
+              <i class="material-icons">person</i>
+              <a class="nav-link" >{{ username }}</a>
+            </div>
+            
+          </li>
+          <li class="nav-item">
+            <a href="/ong" class="nav-link" routerLink="anamnese">Anamneses</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" (click)="logout()">
+            <div class="logout-container">
+              <i class="material-icons" (click)="logout()">exit_to_app</i>
+              <span (click)="logout()">Sair</span>
+            </div>
+            
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
